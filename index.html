@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="vi" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHINH PHỤC ĐIỂM CAO ĐỊA LÍ 7 | Cô Nguyễn Chung</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .btn-3d {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 0 0 rgba(16, 185, 129, 0.6), 0 12px 25px rgba(0,0,0,0.15);
+        }
+        .btn-3d:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 0 rgba(16, 185, 129, 0.6), 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .btn-amber-3d {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 0 0 rgba(217, 119, 6, 0.6), 0 12px 25px rgba(0,0,0,0.15);
+        }
+        .btn-amber-3d:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 0 rgba(217, 119, 6, 0.6), 0 6px 12px rgba(0,0,0,0.1);
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        .floating { animation: float 3s ease-in-out infinite; }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.5); }
+            50% { box-shadow: 0 0 35px rgba(245, 158, 11, 0.9); }
+        }
+        .glow-box { animation: pulse-glow 2.5s infinite; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-emerald-50 to-teal-100 min-h-full flex flex-col text-slate-800">
+
+    <!-- Header Navigation -->
+    <header class="bg-white/95 backdrop-blur-md text-slate-800 shadow-md sticky top-0 z-50 border-b border-emerald-500/20">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col lg:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3 w-full lg:w-auto justify-between lg:justify-start">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-gradient-to-br from-emerald-500 to-teal-600 text-white p-3 rounded-2xl shadow-xl font-bold text-xl flex items-center justify-center floating border border-emerald-300/40">
+                        <i class="fa-solid fa-earth-asia"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-base md:text-xl font-extrabold tracking-tight bg-gradient-to-r from-emerald-700 via-teal-700 to-cyan-700 bg-clip-text text-transparent">CHINH PHỤC ĐIỂM CAO ĐỊA LÍ 7</h1>
+                        <p class="text-xs text-emerald-700 font-semibold tracking-wide">Trường Mường Thanh (Phân Hiệu) | Cô giáo: Nguyễn Chung</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Horizontal navigation tabs -->
+            <nav class="flex items-center gap-2 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0 text-sm font-bold scrollbar-none">
+                <button onclick="switchTab('overview')" class="tab-btn px-4 py-2.5 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition shadow-lg active-tab flex items-center gap-2 border border-emerald-400/40 shrink-0">
+                    <i class="fa-solid fa-house"></i> Tổng quan
+                </button>
+                <button onclick="switchTab('challenge')" class="tab-btn px-4 py-2.5 rounded-xl bg-amber-500 text-white hover:bg-amber-600 transition shadow-lg flex items-center gap-2 border border-amber-400 glow-box shrink-0">
+                    <i class="fa-solid fa-crown text-amber-200"></i> Thử Thách 3D
+                </button>
+                <button onclick="switchTab('mcq')" class="tab-btn px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-emerald-700 hover:text-white transition shadow-sm flex items-center gap-2 border border-slate-200 shrink-0">
+                    <i class="fa-solid fa-list-check"></i> Trắc nghiệm (24)
+                </button>
+                <button onclick="switchTab('tf')" class="tab-btn px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-emerald-700 hover:text-white transition shadow-sm flex items-center gap-2 border border-slate-200 shrink-0">
+                    <i class="fa-solid fa-check-to-slot"></i> Đúng/Sai (4)
+                </button>
+                <button onclick="switchTab('short')" class="tab-btn px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-emerald-700 hover:text-white transition shadow-sm flex items-center gap-2 border border-slate-200 shrink-0">
+                    <i class="fa-solid fa-calculator"></i> Tính toán (8)
+                </button>
+                <button onclick="switchTab('essay')" class="tab-btn px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-emerald-700 hover:text-white transition shadow-sm flex items-center gap-2 border border-slate-200 shrink-0">
+                    <i class="fa-solid fa-book-open"></i> Tự luận (12)
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 text-slate-800">
+
+        <!-- OVERVIEW TAB -->
+        <section id="tab-overview" class="tab-content space-y-6 animate-fade-in">
+            <div class="bg-white/96 rounded-3xl shadow-2xl p-6 md:p-10 border border-emerald-500/20 backdrop-blur-md relative overflow-hidden">
+                <div class="absolute -right-16 -bottom-16 opacity-10 pointer-events-none">
+                    <img src="https://placehold.co/400x400/10b981/ffffff?text=Geography" alt="Watermark" class="rounded-full">
+                </div>
+                <div class="max-w-3xl relative z-10">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm">Năm học 2026 - 2027</span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mt-4">Hệ Thống Ôn Tập Địa Lí 7 - Giữa Học Kỳ I</h2>
+                    <p class="text-slate-600 mt-3 text-sm md:text-base leading-relaxed">
+                        Chào mừng các em học sinh khối 7 trường <strong>Mường Thanh (Phân Hiệu)</strong> đến với không gian học tập trực tuyến môn Địa lí 7 do cô giáo <strong>Nguyễn Chung</strong> biên soạn. Nền tảng giúp em ôn luyện toàn diện qua kho câu hỏi chuẩn đề cương, minigame 3D hấp dẫn và tự luận tương tác cao!
+                    </p>
+                </div>
+
+                <!-- Banner Section -->
+                <div class="mt-8 rounded-3xl overflow-hidden shadow-2xl border-2 border-emerald-200 relative bg-gradient-to-r from-emerald-900 via-teal-800 to-cyan-900 p-6 md:p-10 text-white">
+                    <div class="absolute right-0 top-0 bottom-0 opacity-20 pointer-events-none flex items-center pr-8">
+                        <i class="fa-solid fa-earth-americas text-8xl md:text-9xl"></i>
+                    </div>
+                    <div class="relative z-10 max-w-2xl space-y-3">
+                        <span class="bg-emerald-500 text-white text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-widest shadow">Ôn tập chất lượng cao</span>
+                        <h3 class="text-2xl md:text-4xl font-extrabold tracking-tight">CHINH PHỤC ĐIỂM CAO ĐỊA LÍ 7</h3>
+                        <p class="text-emerald-200 text-sm md:text-base font-semibold">"Học mà chơi – Chơi mà học cùng cô Nguyễn Chung"</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+                    <div class="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-3xl p-6 shadow-xl transition transform hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-4 shadow-lg btn-amber-3d">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-slate-900">Thử Thách 3D</h3>
+                        <p class="text-sm text-slate-600 mt-2"><b>"Ai Là Nhà Địa Lí Tài Ba"</b>: Chinh phục toàn bộ 24 câu hỏi trắc nghiệm với thời gian 30s mỗi câu, có giải thích đáp án và tích lũy điểm thưởng!</p>
+                        <button onclick="switchTab('challenge')" class="mt-5 w-full py-3 bg-amber-500 hover:bg-amber-600 text-white font-extrabold rounded-xl shadow-lg btn-amber-3d flex items-center justify-center gap-2">
+                            <span>Bắt đầu thử thách</span> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-emerald-50 to-teal-50 border-2 border-emerald-300 rounded-3xl p-6 shadow-xl transition transform hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-4 shadow-lg btn-3d">
+                            <i class="fa-solid fa-clipboard-question"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-slate-900">32 Câu Trắc Nghiệm</h3>
+                        <p class="text-sm text-slate-600 mt-2">Bao gồm 24 câu nhiều lựa chọn, 4 câu Đúng/Sai và 8 câu trả lời ngắn tính toán số liệu kèm giải thích tường tận từng câu chuẩn đề cương.</p>
+                        <button onclick="switchTab('mcq')" class="mt-5 w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold rounded-xl shadow-lg btn-3d flex items-center justify-center gap-2">
+                            <span>Làm trắc nghiệm</span> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-cyan-50 to-blue-50 border-2 border-cyan-300 rounded-3xl p-6 shadow-xl transition transform hover:-translate-y-1">
+                        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-4 shadow-lg btn-3d">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                        </div>
+                        <h3 class="font-extrabold text-xl text-slate-900">12 Câu Tự Luận</h3>
+                        <p class="text-sm text-slate-600 mt-2">Tự luận từ câu 37 đến 48 chuẩn đề cương: học sinh tự gõ câu trả lời hoặc chụp ảnh bài làm để AI & cô giáo nhận biết bài làm chuẩn xác.</p>
+                        <button onclick="switchTab('essay')" class="mt-5 w-full py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-extrabold rounded-xl shadow-lg btn-3d flex items-center justify-center gap-2">
+                            <span>Làm tự luận</span> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHALLENGE 3D TAB -->
+        <section id="tab-challenge" class="tab-content hidden space-y-6 animate-fade-in">
+            <div class="bg-white/96 rounded-3xl shadow-2xl p-6 md:p-10 border-2 border-amber-400 backdrop-blur-md">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6">
+                    <div>
+                        <span class="bg-amber-100 text-amber-900 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm border border-amber-300">Minigame 3D Đỉnh Cao</span>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2 flex items-center gap-2.5">
+                            <i class="fa-solid fa-crown text-amber-500"></i> "Ai Là Nhà Địa Lí Tài Ba"
+                        </h2>
+                        <p class="text-sm text-slate-600 mt-1">Hệ thống lần lượt đưa ra toàn bộ 24 câu hỏi trắc nghiệm. Trả lời đúng nhận 10 điểm kèm giải thích chi tiết!</p>
+                    </div>
+                    <div id="challenge-stats" class="hidden flex items-center gap-3">
+                        <span class="bg-amber-100 text-amber-900 font-extrabold px-4 py-2 rounded-xl text-sm shadow border border-amber-300"><i class="fa-solid fa-star text-amber-500 mr-1.5"></i> Điểm: <span id="chal-score">0</span> / <span id="chal-max-score">240</span></span>
+                        <span class="bg-rose-100 text-rose-900 font-extrabold px-4 py-2 rounded-xl text-sm shadow border border-rose-300"><i class="fa-solid fa-clock text-rose-500 mr-1.5"></i> Thời gian: <span id="chal-timer">30</span>s</span>
+                    </div>
+                </div>
+
+                <div id="challenge-lobby" class="py-12 text-center space-y-6">
+                    <div class="w-32 h-32 bg-gradient-to-tr from-amber-400 via-orange-500 to-yellow-500 text-white rounded-3xl flex items-center justify-center text-6xl mx-auto shadow-2xl floating btn-amber-3d">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <div class="max-w-lg mx-auto space-y-2">
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900">Sẵn sàng tranh tài cùng Cô Nguyễn Chung?</h3>
+                        <p class="text-sm text-slate-600">Thử thách bao gồm toàn bộ 24 câu hỏi trắc nghiệm xuất sắc nhất từ đề cương ôn tập. Vượt mốc thời gian 30s mỗi câu để khẳng định đẳng cấp!</p>
+                    </div>
+                    <button onclick="startChallenge()" class="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-extrabold px-10 py-4 rounded-2xl shadow-xl btn-amber-3d text-lg transition transform hover:scale-105">
+                        <i class="fa-solid fa-play mr-2"></i> Bắt Đầu Thử Thách Ngay
+                    </button>
+                </div>
+
+                <div id="challenge-playarea" class="hidden mt-6 space-y-6">
+                    <div class="flex justify-between items-center text-sm font-bold text-slate-600">
+                        <span id="chal-progress" class="bg-slate-100 px-4 py-1.5 rounded-xl border border-slate-200">Câu hỏi 1 / 24</span>
+                        <span id="chal-level" class="text-amber-700 bg-amber-50 px-4 py-1.5 rounded-xl border border-amber-200 font-extrabold"><i class="fa-solid fa-award mr-1"></i> Cấp độ: Nhà Địa Lí Tập Sự</span>
+                    </div>
+                    <div id="chal-question-box" class="p-6 md:p-8 bg-amber-50/70 rounded-3xl border-2 border-amber-300 shadow-inner space-y-5">
+                        <!-- Challenge question injected via JS -->
+                    </div>
+                    <div id="chal-feedback-box" class="hidden p-5 rounded-2xl border text-sm font-semibold shadow-sm"></div>
+                </div>
+
+                <div id="challenge-result" class="hidden py-12 text-center space-y-6">
+                    <div class="w-32 h-32 bg-gradient-to-tr from-emerald-400 to-teal-600 text-white rounded-3xl flex items-center justify-center text-6xl mx-auto shadow-2xl floating">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="max-w-md mx-auto space-y-2">
+                        <h3 id="chal-final-title" class="text-3xl font-extrabold text-slate-900">Chúc Mừng Em!</h3>
+                        <p id="chal-final-desc" class="text-slate-600 text-base leading-relaxed">Em đã hoàn thành xuất sắc thử thách.</p>
+                    </div>
+                    <button onclick="startChallenge()" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-extrabold px-8 py-4 rounded-2xl shadow-xl btn-3d text-base">
+                        <i class="fa-solid fa-rotate-right mr-2"></i> Chơi Lại Thử Thách
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCQ TAB -->
+        <section id="tab-mcq" class="tab-content hidden space-y-6 animate-fade-in">
+            <div class="bg-white/96 rounded-3xl shadow-2xl p-6 md:p-10 border border-emerald-500/20 backdrop-blur-md">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6">
+                    <div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm">Phần I</span>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">24 Câu Trắc Nghiệm Nhiều Lựa Chọn</h2>
+                        <p class="text-sm text-slate-600 mt-1">Chọn đáp án đúng nhất cho từng câu hỏi ôn tập châu Âu và châu Á kèm giải thích chi tiết.</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span id="mcq-score-badge" class="bg-emerald-100 text-emerald-900 font-extrabold px-4 py-2.5 rounded-xl text-sm shadow border border-emerald-300">Điểm: 0 / 24</span>
+                        <button onclick="submitMCQ()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold px-6 py-3 rounded-xl shadow-lg btn-3d text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-check"></i> Nộp bài
+                        </button>
+                    </div>
+                </div>
+
+                <div id="mcq-container" class="mt-8 space-y-6">
+                    <!-- 24 MCQ injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUE / FALSE TAB -->
+        <section id="tab-tf" class="tab-content hidden space-y-6 animate-fade-in">
+            <div class="bg-white/96 rounded-3xl shadow-2xl p-6 md:p-10 border border-teal-500/20 backdrop-blur-md">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6">
+                    <div>
+                        <span class="bg-teal-100 text-teal-800 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm">Phần II</span>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Trắc Nghiệm Đúng / Sai (Câu 25 - 28)</h2>
+                        <p class="text-sm text-slate-600 mt-1">Đọc kỹ đoạn ngữ liệu và xác định các nhận định a, b, c, d là Đúng (Đ) hay Sai (S) theo đúng chuẩn đề cương.</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span id="tf-score-badge" class="bg-teal-100 text-teal-900 font-extrabold px-4 py-2.5 rounded-xl text-sm shadow border border-teal-300">Điểm: 0 / 16</span>
+                        <button onclick="submitTF()" class="bg-teal-600 hover:bg-teal-700 text-white font-extrabold px-6 py-3 rounded-xl shadow-lg btn-3d text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-check"></i> Nộp bài
+                        </button>
+                    </div>
+                </div>
+
+                <div id="tf-container" class="mt-8 space-y-8">
+                    <!-- TF injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SHORT ANSWER TAB -->
+        <section id="tab-short" class="tab-content hidden space-y-6 animate-fade-in">
+            <div class="bg-white/96 rounded-3xl shadow-2xl p-6 md:p-10 border border-cyan-500/20 backdrop-blur-md">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6">
+                    <div>
+                        <span class="bg-cyan-100 text-cyan-800 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm">Phần III</span>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">Trắc Nghiệm Trả Lời Ngắn & Tính Toán (Câu 29 - 36)</h2>
+                        <p class="text-sm text-slate-600 mt-1">Tính toán số liệu GDP, tỉ lệ phát thải khí nhà kính và điền kết quả chính xác kèm giải thích.</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span id="short-score-badge" class="bg-cyan-100 text-cyan-900 font-extrabold px-4 py-2.5 rounded-xl text-sm shadow border border-cyan-300">Điểm: 0 / 8</span>
+                        <button onclick="submitShort()" class="bg-cyan-600 hover:bg-cyan-700 text-white font-extrabold px-6 py-3 rounded-xl shadow-lg btn-3d text-sm flex items-center gap-2">
+                            <i class="fa-solid fa-check"></i> Nộp bài
+                        </button>
+                    </div>
+                </div>
+
+                <div id="short-container" class="mt-8 space-y-6">
+                    <!-- Short answers injected via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ESSAY TAB -->
+        <section id="tab-essay" class="tab-content hidden space-y-6 animate-fade-in">
+            <div class="bg-white/96 rounded-3xl shadow-2xl p-6 md:p-10 border border-teal-500/20 backdrop-blur-md">
+                <div class="border-b pb-6 mb-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="bg-teal-100 text-teal-800 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-sm">Phần IV</span>
+                        <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">12 Câu Hỏi Tự Luận (Câu 37 - 48)</h2>
+                        <p class="text-sm text-slate-600 mt-1">Học sinh tự gõ câu trả lời vào ô trống hoặc chụp ảnh bài làm gửi lên. Cô giáo Nguyễn Chung và hệ thống AI sẽ tự động nhận biết em đã trả lời đúng và đủ ý chưa!</p>
+                    </div>
+                    <button onclick="submitAllEssay()" class="bg-teal-600 hover:bg-teal-700 text-white font-extrabold px-6 py-3 rounded-xl shadow-lg btn-3d text-sm flex items-center gap-2 shrink-0">
+                        <i class="fa-solid fa-paper-plane"></i> Chấm bài tự luận
+                    </button>
+                </div>
+
+                <div id="essay-container" class="space-y-6">
+                    <!-- Essay injected via JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white text-slate-600 py-8 mt-auto border-t border-slate-200 text-center shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 text-sm space-y-2">
+            <p class="font-bold text-slate-700">Hệ thống Ôn tập Địa lí 7 - Trường Mường Thanh (Phân Hiệu)</p>
+            <p class="text-emerald-600 font-extrabold">Giáo viên phụ trách: Cô giáo Nguyễn Chung | Năm học 2026 - 2027</p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-600', 'bg-amber-500', 'bg-teal-600', 'text-white', 'border-emerald-400');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            const activeBtn = event ? event.currentTarget : document.querySelector(`button[onclick="switchTab('${tabId}')"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+                if (tabId === 'challenge') {
+                    activeBtn.classList.add('bg-amber-500', 'text-white', 'border-amber-400');
+                } else {
+                    activeBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-400');
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const mcqData = [
+            { id: 1, q: "Tại sao khu vực Tây Âu có khí hậu ôn đới hải dương ấm áp và mưa nhiều quanh năm hơn khu vực Đông Âu?", options: ["Do Tây Âu nằm ở vĩ độ thấp hơn và gần vùng Xích đạo hơn Đông Âu.", "Do Đông Âu bị che chắn bởi hệ thống núi cao đồ sộ Hi-ma-lay-a.", "Do Tây Âu chịu ảnh hưởng mạnh của dòng hải lưu nóng Bắc Đại Tây Dương và gió Tây ôn đới.", "Do Tây Âu có diện tích đồng bằng rộng lớn chiếm phần lớn lãnh thổ."], correct: 2, explanation: "Tây Âu chịu tác động mạnh của dòng hải lưu nóng Bắc Đại Tây Dương và gió Tây ôn đới mang hơi ẩm từ biển vào, làm điều hòa nhiệt độ và tăng lượng mưa." },
+            { id: 2, q: "Nhằm giải quyết tình trạng ô nhiễm nguồn nước xuyên biên giới trên các dòng sông lớn như sông Rai-nơ và sông Đa-nuýp, biện pháp thực tiễn hiệu quả nhất mà các quốc gia châu Âu đã cùng nhau thực hiện là", options: ["nghiêm cấm hoàn toàn hoạt động giao thông vận tải đường thuỷ trên toàn bộ lưu vực sông.", "ký kết công ước quốc tế và thành lập các ủy ban chung để giám sát, xử lý nguồn nước thải.", "chuyển đổi dòng chảy của các con sông về một quốc gia duy nhất để thuận tiện quản lý.", "xây dựng các đập thủy điện quy mô lớn ở tất cả các đoạn sông để ngăn chặn chất thải lan rộng."], correct: 1, explanation: "Sông chảy qua nhiều quốc gia nên việc ký kết công ước quốc tế và thành lập ủy ban chung giám sát, xử lý nguồn nước thải là giải pháp hợp tác ngoại giao và kỹ thuật hiệu quả nhất." },
+            { id: 3, q: "Châu lục nào sau đây có diện tích lớn nhất trên thế giới?", options: ["Châu Á.", "Châu Âu.", "Châu Phi.", "Châu Mỹ."], correct: 0, explanation: "Châu Á là châu lục lớn nhất thế giới với diện tích trên 44,4 triệu km²." },
+            { id: 4, q: "Khu vực nào sau đây của châu Á là nơi tập trung các hệ thống núi và sơn nguyên cao, đồ sộ bậc nhất thế giới?", options: ["Phía bắc lục địa.", "Phía đông lục địa.", "Vùng phía nam và tây nam.", "Vùng trung tâm lục địa."], correct: 3, explanation: "Vùng trung tâm châu Á tập trung các hệ thống núi và sơn nguyên cao, đồ sộ như Pam-mia, Thiên Sơn, Hi-ma-lay-a..." },
+            { id: 5, q: "Châu Á không tiếp giáp với đại dương nào sau đây?", options: ["Đại Tây Dương", "Bắc Băng Dương", "Thái Bình Dương", "Ấn Độ Dương"], correct: 0, explanation: "Châu Á tiếp giáp 3 đại dương (Bắc Băng Dương, Thái Bình Dương, Ấn Độ Dương) nhưng không tiếp giáp Đại Tây Dương." },
+            { id: 6, q: "Đặc điểm nào sau đây không phải là đặc điểm vị trí của châu Á", options: ["Là một bộ phận của lục địa Á- Âu.", "Kéo dài từ cực Bắc đến vùng Xích đạo.", "Đại bộ phận diện tích nằm giữa chí tuyến Bắc và chí tuyến Nam.", "Tiếp giáp với 2 châu lục và 3 đại dương rộng lớn."], correct: 2, explanation: "Đại bộ phận diện tích châu Á nằm giữa chí tuyến Bắc và vòng cực Bắc, không phải nằm hoàn toàn giữa hai chí tuyến." },
+            { id: 7, q: "Tại sao các dãy núi trẻ ở phía nam châu Âu thường gây nhiều khó khăn cho việc xây dựng các tuyến giao thông đường bộ?", options: ["Vì các dãy núi có độ cao thấp và độ dốc cao.", "Vì địa hình núi cao, hiểm trở và có nhiều sườn dốc.", "Vì khu vực này chủ yếu cao nguyên xếp tầng.", "Vì các dãy núi thường nằm sát vùng ven biển."], correct: 1, explanation: "Địa hình núi trẻ cao, hiểm trở và có nhiều sườn dốc làm cản trở lớn đối với việc mở đường bộ và hầm giao thông." },
+            { id: 8, q: "Một quốc gia châu Âu muốn giảm lượng khí nhà kính phát thải từ hoạt động sản xuất điện nhưng vẫn bảo đảm nhu cầu năng lượng cho phát triển kinh tế. Giải pháp nào sau đây phù hợp nhất?", options: ["Mở rộng các nhà máy nhiệt điện than để tăng sản lượng điện với chi phí thấp.", "Tăng cường sử dụng dầu mỏ và khí tự nhiên thay thế hoàn toàn năng lượng tái tạo.", "Hạn chế phát triển công nghiệp và cắt giảm toàn bộ nhu cầu sử dụng điện.", "Từng bước giảm sử dụng than đá, tăng cường khai thác năng lượng gió và năng lượng mặt trời."], correct: 3, explanation: "Phát triển năng lượng tái tạo (gió, mặt trời) giúp giảm phát thải khí nhà kính mà vẫn duy trì nguồn điện cho nền kinh tế." },
+            { id: 9, q: "Châu Á là bộ phận của lục địa nào?", options: ["Á - Âu.", "Phi.", "Nam Mỹ.", "Ô-xtrây-li-a."], correct: 0, explanation: "Châu Á cùng với châu Âu hợp thành lục địa lớn Á - Âu." },
+            { id: 10, q: "Châu Á tiếp giáp với đại dương nào ở phía đông?", options: ["Đại Tây Dương.", "Ấn Độ Dương.", "Thái Bình Dương.", "Bắc Băng Dương."], correct: 2, explanation: "Phía đông châu Á giáp Thái Bình Dương rộng lớn." },
+            { id: 11, q: "Các dãy núi và sơn nguyên cao, đồ sộ nhất châu Á tập trung chủ yếu ở", options: ["phía bắc.", "phía đông.", "ven biển phía nam.", "vùng trung tâm."], correct: 3, explanation: "Vùng trung tâm châu Á là nơi hội tụ các sơn nguyên và dãy núi đồ sộ." },
+            { id: 12, q: "Khí hậu châu Á phổ biến là các kiểu khí hậu nào?", options: ["Khí hậu gió mùa và khí hậu lục địa.", "Khí hậu gió mùa và khí hậu cận nhiệt địa trung hải", "Khí hậu hải dương và khí hậu lục địa.", "Khí hậu gió mùa và khí hậu hải dương"], correct: 0, explanation: "Châu Á có diện tích rộng lớn nên khí hậu gió mùa và khí hậu lục địa là hai kiểu phổ biến nhất." },
+            { id: 13, q: "Vì sao các khu vực núi cao châu Âu có sự thay đổi khí hậu theo độ cao?", options: ["Vì càng lên cao nhiệt độ càng giảm.", "Vì càng lên cao càng gần Xích đạo.", "Vì núi cao không chịu ảnh hưởng của nhiệt độ.", "Vì lượng mưa ở mọi độ cao khác nhau."], correct: 0, explanation: "Quy luật đai cao: càng lên cao nhiệt độ không khí càng giảm (trung bình giảm 0,6°C cho mỗi 100m)." },
+            { id: 14, q: "Sông Đa-nuýp chảy qua thủ đô Budapest của Hungary, cung cấp nguồn nước cho sinh hoạt, sản xuất và du lịch. Những năm gần đây, áp lực từ hoạt động kinh tế và dân cư làm gia tăng nguy cơ ô nhiễm nguồn nước. Để bảo vệ nguồn nước của sông Đa-nuýp một cách lâu dài, chính quyền thành phố Budapest nên ưu tiên biện pháp nào sau đây?", options: ["Hạn chế thải trực tiếp nước ô nhiễm vào nguồn nước sông.", "Đẩy mạnh tuyên truyền nâng cao ý thức người dân.", "Kiểm soát nguồn gây ô nhiễm và bảo vệ lưu vực.", "Thường xuyên tổ chức các hoạt động làm sạch mặt nước."], correct: 2, explanation: "Kiểm soát nguồn gây ô nhiễm tận gốc và bảo vệ toàn diện lưu vực sông là giải pháp chiến lược bền vững." },
+            { id: 15, q: "Địa hình châu Á có đặc điểm nổi bật nào sau đây?", options: ["Chủ yếu là các đồng bằng thấp và bằng phẳng.", "Các dãy núi chủ yếu phân bố ở ven biển.", "Địa hình tương đối thấp và ít bị chia cắt.", "Có nhiều hệ thống núi, sơn nguyên cao, đồ sộ và đồng bằng rộng lớn."], correct: 3, explanation: "Đặc điểm địa hình châu Á rất phức tạp: có nhiều hệ thống núi, sơn nguyên cao đồ sộ và các đồng bằng rộng lớn xen kẽ." },
+            { id: 16, q: "Châu Á tiếp giáp với đại dương nào ở phía bắc?", options: ["Đại Tây Dương.", "Bắc Băng Dương.", "Thái Bình Dương.", "Ấn Độ Dương."], correct: 1, explanation: "Phía bắc châu Á giáp vùng biển băng giá Bắc Băng Dương." },
+            { id: 17, q: "Khí hậu châu Á có đặc điểm nổi bật nào sau đây?", options: ["Phân hóa đa dạng thành nhiều đới và kiểu khí hậu khác nhau.", "Chủ yếu là khí hậu nhiệt đới gió mùa trên toàn lãnh thổ.", "Khí hậu ôn đới hải dương chiếm phần lớn diện tích.", "Khí hậu nóng ẩm và mưa nhiều quanh năm ở mọi khu vực."], correct: 0, explanation: "Do lãnh thổ trải dài từ vùng cực đến xích đạo và kích thước rất rộng lớn nên khí hậu phân hóa cực kỳ đa dạng." },
+            { id: 18, q: "Khu vực nào sau đây của châu Á có mạng lưới sông ngòi kém phát triển do khí hậu khô hạn?", options: ["Bắc Á.", "Đông Nam Á.", "Đông Á và Nam Á.", "Tây Á và Trung Á."], correct: 3, explanation: "Tây Á và Trung Á có khí hậu lục địa khô hạn khắc nghiệt nên mạng lưới sông ngòi thưa thớt, kém phát triển." },
+            { id: 19, q: "Nguyên nhân chủ yếu khiến ven biển phía tây châu Âu mưa nhiều hơn sâu trong nội địa do", options: ["phía tây có địa hình núi cao chắn gió.", "chịu tác động của gió Tây ôn đới mang hơi ẩm.", "có vị trí nằm gần khu vực cực Bắc hơn.", "không chịu tác động của các dòng biển nóng."], correct: 1, explanation: "Gió Tây ôn đới thổi từ Đại Tây Dương mang theo lượng hơi ẩm dồi dào trút xuống khu vực ven biển phía Tây." },
+            { id: 20, q: "Thành phố Copenhagen (Đan Mạch) triển khai chương trình \"Ngày không khói xe\". Sau một năm thực hiện, số người sử dụng xe buýt tăng 25%, số lượt đi xe đạp tăng 40% và chất lượng không khí được cải thiện rõ rệt. Để duy trì kết quả này trong thời gian dài, thành phố nên ưu tiên giải pháp nào sau đây?", options: ["Mở rộng mạng lưới giao thông công cộng và xe đạp.", "Tăng diện tích cây xanh trong các khu dân cư.", "Xây dựng thêm bãi đỗ xe ngầm tại trung tâm thành phố.", "Khuyến khích sử dụng đồng thời nhiều loại phương tiện giao thông."], correct: 0, explanation: "Phát triển giao thông công cộng thân thiện môi trường và hạ tầng xe đạp giúp thay đổi thói quen di chuyển lâu dài của người dân." },
+            { id: 21, q: "Dãy núi nào sau đây là dãy núi cao và đồ sộ nhất châu Á?", options: ["Hi-ma-lay-a", "Côn Luân", "Thiên Sơn", "Cap-ca"], correct: 0, explanation: "Hi-ma-lay-a là dãy núi cao và đồ sộ nhất thế giới với đỉnh Everest cao 8.848m." },
+            { id: 22, q: "Châu Á tiếp giáp với đại dương nào ở phía nam?", options: ["Đại Tây Dương.", "Ấn Độ Dương.", "Thái Bình Dương.", "Bắc Băng Dương."], correct: 1, explanation: "Phía nam châu Á giáp Ấn Độ Dương ấm áp." },
+            { id: 23, q: "Địa hình phía Bắc châu Á có đặc điểm gì?", options: ["vùng núi cao, đồ sộ và hiểm trở nhất thế giới.", "núi, cao nguyên và đồng bằng ven biển.", "đồng bằng và cao nguyên thấp, bằng phẳng.", "dãy núi trẻ, các sơn nguyên và đồng bằng nằm xen kẽ."], correct: 2, explanation: "Phía bắc châu Á (vùng Xibia) chủ yếu là các đồng bằng rộng lớn (Đồng bằng Tây Xibia) và cao nguyên thấp, bằng phẳng." },
+            { id: 24, q: "Sông ngòi châu Á có đặc điểm nào sau đây?", options: ["Mạng lưới sông ngòi thưa thớt trên toàn lãnh thổ.", "Các sông đều có chế độ nước giống nhau.", "Phần lớn các sông đều ngắn và có lưu vực nhỏ.", "Có nhiều hệ thống sông lớn nhưng phân bố không đều."], correct: 3, explanation: "Châu Á có nhiều hệ thống sông lớn (Ob, I-ê-nít-xây, Mê Công...) nhưng phân bố không đều do sự phân hóa khí hậu." }
+        ];
+
+        function renderMCQ() {
+            const container = document.getElementById('mcq-container');
+            container.innerHTML = '';
+            mcqData.forEach((item, idx) => {
+                let html = `
+                    <div class="p-6 bg-slate-50/90 rounded-2xl border-2 border-slate-200 shadow-sm space-y-4">
+                        <p class="font-extrabold text-slate-900 text-base">Câu ${idx + 1}. ${item.q}</p>
+                        <div class="space-y-2.5">
+                `;
+                item.options.forEach((opt, optIdx) => {
+                    html += `
+                        <label class="flex items-center gap-3.5 p-3.5 bg-white rounded-xl border border-slate-200 cursor-pointer hover:bg-emerald-50/80 transition shadow-sm font-medium">
+                            <input type="radio" name="mcq-${item.id}" value="${optIdx}" class="w-4 h-4 text-emerald-600 focus:ring-emerald-500">
+                            <span class="text-slate-800 text-sm"><b>${String.fromCharCode(65 + optIdx)}.</b> ${opt}</span>
+                        </label>
+                    `;
+                });
+                html += `</div><div id="mcq-feedback-${item.id}" class="hidden p-4 rounded-xl text-sm font-semibold mt-3"></div></div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        function submitMCQ() {
+            let score = 0;
+            mcqData.forEach(item => {
+                const selected = document.querySelector(`input[name="mcq-${item.id}"]:checked`);
+                const feedback = document.getElementById(`mcq-feedback-${item.id}`);
+                feedback.classList.remove('hidden');
+                if (selected && parseInt(selected.value) === item.correct) {
+                    score += 1;
+                    feedback.className = "p-4 rounded-xl text-sm font-semibold mt-3 bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i><b>Chính xác!</b> ${item.explanation}`;
+                } else {
+                    feedback.className = "p-4 rounded-xl text-sm font-semibold mt-3 bg-rose-50 text-rose-800 border border-rose-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 mr-2"></i><b>Chưa chính xác.</b> Đáp án đúng là: <b>${String.fromCharCode(65 + item.correct)}. ${item.options[item.correct]}</b><br><span class="text-xs text-slate-600 mt-1 block font-normal">Giải thích: ${item.explanation}</span>`;
+                }
+            });
+            document.getElementById('mcq-score-badge').innerText = `Điểm: ${score} / 24`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const tfData = [
+            {
+                id: 25,
+                context: "Câu 25. “Châu Âu là bộ phận phía tây của lục địa Á - Âu nằm hoàn toàn ở bán cầu Bắc. Lãnh thổ trải dài từ khoảng vĩ độ 36⁰B đến 71⁰B. Châu Âu có ba mặt giáp biển và đại dương: phía bắc giáp Bắc Băng Dương, phía tây giáp Đại Tây Dương, phía nam giáp Địa Trung Hải. Đường bờ biển của châu Âu bị cắt xẻ mạnh, tạo thành nhiều bán đảo, vũng vịnh và biển ăn sâu vào đất liền. Địa hình châu Âu gồm hai khu vực chính là đồng bằng và miền núi. Đại bộ phận lãnh thổ châu Âu có khí hậu ôn đới.”",
+                statements: [
+                    { text: "a) Châu Âu là một bộ phận nằm ở phía đông của lục địa Á - Âu và nằm hoàn toàn ở bán cầu Nam.", answer: false, exp: "Châu Âu nằm ở phía tây lục địa Á - Âu và hoàn toàn ở bán cầu Bắc." },
+                    { text: "b) Ở phía bắc, lãnh thổ châu Âu tiếp giáp trực tiếp với Bắc Băng Dương.", answer: true, exp: "Phía bắc châu Âu giáp Bắc Băng Dương." },
+                    { text: "c) Đại bộ phận lãnh thổ châu Âu có khí hậu ôn đới do lãnh thổ nằm chủ yếu trong đới ôn hòa ở bán cầu Bắc.", answer: true, exp: "Châu Âu nằm chủ yếu trong đới ôn hòa." },
+                    { text: "d) Một doanh nghiệp dự định đầu tư phát triển nông nghiệp và giao thông vận tải tại châu Âu. Qua tìm hiểu, doanh nghiệp nhận thấy địa hình châu Âu chủ yếu là núi cao, hiểm trở nên hoạt động giao thông vận tải và phát triển nông nghiệp gặp nhiều khó khăn trên phần lớn lãnh thổ.", answer: false, exp: "Đồng bằng chiếm 2/3 diện tích châu Âu, rất thuận lợi cho nông nghiệp và giao thông, không phải chủ yếu núi cao." }
+                ]
+            },
+            {
+                id: 26,
+                context: "Câu 26. “Châu Âu nằm ở phía tây của lục địa Á - Âu có ba mặt giáp biển và đại dương. Đường bờ biển bị cắt xẻ mạnh, hình thành nhiều bán đảo, vũng vịnh và biển ăn sâu vào đất liền. Địa hình châu Âu chủ yếu gồm đồng bằng và miền núi. Đồng bằng chiếm phần lớn diện tích lãnh thổ, tạo điều kiện thuận lợi cho phát triển nông nghiệp, xây dựng các đô thị và hệ thống giao thông. Phần lớn lãnh thổ châu Âu nằm trong đới khí hậu ôn đới.”",
+                statements: [
+                    { text: "a) Châu Âu nằm ở phía đông của lục địa Á – Âu và có bốn mặt giáp biển, đại dương.", answer: false, exp: "Châu Âu nằm ở phía tây và có 3 mặt giáp biển." },
+                    { text: "b) Đồng bằng chiếm phần lớn diện tích lãnh thổ châu Âu.", answer: true, exp: "Đồng bằng chiếm khoảng 2/3 diện tích châu Âu." },
+                    { text: "c) Đường bờ biển châu Âu ít bị cắt xẻ nên không thuận lợi cho việc xây dựng các cảng biển.", answer: false, exp: "Đường bờ biển bị cắt xẻ rất mạnh, tạo nhiều vũng vịnh thuận lợi." },
+                    { text: "d) Nước Đức ưu tiên xây dựng tuyến đường sắt và phát triển các vùng sản xuất nông nghiệp quy mô lớn tại khu vực đồng bằng Bắc Âu nhằm tận dụng điều kiện địa hình bằng phẳng, gần biển thuận lợi cho giao thông và sản xuất.", answer: true, exp: "Đồng bằng Bắc Âu phẳng rộng rất thuận lợi cho giao thông và nông nghiệp." }
+                ]
+            },
+            {
+                id: 27,
+                context: "Câu 27. “Do chịu ảnh hưởng của điều kiện khí hậu, sông ngòi châu Âu có chế độ nước khác nhau giữa các khu vực. Ở Tây Âu, nơi có khí hậu ôn đới hải dương, sông ngòi được cung cấp nước chủ yếu từ mưa nên có lượng nước tương đối dồi dào và chế độ nước khá điều hòa. Trong khi đó, ở Đông Âu, khí hậu ôn đới lục địa với mùa đông lạnh khiến nhiều sông bị đóng băng; đến mùa xuân, băng tuyết tan làm mực nước sông dâng cao. Ở Nam Âu, khí hậu Địa Trung Hải có mùa hạ nóng, khô nên nhiều sông có lượng nước giảm vào mùa này.”",
+                statements: [
+                    { text: "a) Sông ngòi ở khu vực Tây Âu được cung cấp nước chủ yếu từ mưa, có chế độ nước tương đối điều hòa quanh năm.", answer: true, exp: "Khí hậu ôn đới hải dương mưa quanh năm giúp sông ngòi điều hòa." },
+                    { text: "b) Sông ngòi ở khu vực Đông Âu thường có lượng nước lớn nhất vào mùa hạ do ảnh hưởng chủ yếu của mưa lớn kéo dài.", answer: false, exp: "Đông Âu có lượng nước lớn nhất vào mùa xuân do băng tuyết tan." },
+                    { text: "c) Sự khác biệt về chế độ nước giữa sông ngòi Tây Âu và Đông Âu chủ yếu do ảnh hưởng của đặc điểm khí hậu và nguồn cung cấp nước ở từng khu vực.", answer: true, exp: "Khí hậu và nguồn cung cấp nước quyết định chế độ sông ngòi." },
+                    { text: "d) Một doanh nghiệp vận tải lựa chọn khai thác tuyến đường sông ở miền bắc nước Nga thuộc phần lãnh thổ châu Âu vào mùa đông để vận chuyển hàng hóa vì cho rằng thời tiết lạnh giúp mực nước sông ổn định, tạo điều kiện thuận lợi cho tàu thuyền hoạt động.", answer: false, exp: "Mùa đông ở đây sông bị đóng băng hoàn toàn, tàu thuyền không đi lại được." }
+                ]
+            },
+            {
+                id: 28,
+                context: "Câu 28. “Liên minh châu Âu (EU) là một tổ chức liên kết kinh tế và chính trị quan trọng trên thế giới. Thông qua việc xây dựng thị trường chung, EU bảo đảm quyền tự do lưu thông hàng hóa, dịch vụ, con người và vốn giữa các quốc gia thành viên. Công dân EU có quyền sinh sống, làm việc tại các quốc gia thành viên khác theo quy định chung. Năm 2020, EU đóng góp khoảng 15% GDP toàn cầu và giữ vị trí quan trọng trong hoạt động thương mại quốc tế.”",
+                statements: [
+                    { text: "a) Thị trường chung EU bảo đảm quyền tự do lưu thông hàng hóa, dịch vụ, con người và vốn giữa các quốc gia thành viên.", answer: true, exp: "Đây là 4 tự do lưu thông cốt lõi của thị trường chung EU." },
+                    { text: "b) Liên minh châu Âu đã hình thành thị trường chung, tuy nhiên hàng hóa trao đổi giữa các quốc gia thành viên vẫn phải chịu thuế nhập khẩu như hàng hóa từ các quốc gia ngoài EU.", answer: false, exp: "Hàng hóa nội khối được miễn thuế nhập khẩu." },
+                    { text: "c) Việc xóa bỏ các rào cản thương mại trong nội khối không chỉ thúc đẩy trao đổi hàng hóa mà còn góp phần nâng cao sức cạnh tranh và vị thế kinh tế của EU trên thị trường thế giới.", answer: true, exp: "Tạo thị trường lớn thống nhất giúp tăng năng lực cạnh tranh." },
+                    { text: "d) Một doanh nghiệp sản xuất ô tô tại Đức muốn bán sản phẩm sang Pháp và Tây Ban Nha. Do các quốc gia này cùng thuộc thị trường chung EU nên doanh nghiệp không phải chịu thuế nhập khẩu nội khối và được miễn toàn bộ các quy định về tiêu chuẩn an toàn, môi trường đối với sản phẩm.", answer: false, exp: "Vẫn phải tuân thủ nghiêm ngặt các tiêu chuẩn an toàn kỹ thuật và môi trường chung." }
+                ]
+            }
+        ];
+
+        function renderTF() {
+            const container = document.getElementById('tf-container');
+            container.innerHTML = '';
+            tfData.forEach((item, idx) => {
+                let html = `
+                    <div class="p-6 bg-slate-50/90 rounded-2xl border-2 border-slate-200 space-y-4 shadow-sm">
+                        <p class="font-extrabold text-slate-900 text-sm md:text-base leading-relaxed">${item.context}</p>
+                        <div class="space-y-3 pt-2">
+                `;
+                item.statements.forEach((stmt, sIdx) => {
+                    html += `
+                        <div class="p-4 bg-white rounded-xl border border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center gap-3 shadow-xs">
+                            <span class="text-slate-800 text-sm font-semibold">${stmt.text}</span>
+                            <div class="flex items-center gap-5 shrink-0">
+                                <label class="flex items-center gap-2 cursor-pointer text-sm font-extrabold text-emerald-700">
+                                    <input type="radio" name="tf-${item.id}-${sIdx}" value="true" class="w-4 h-4 text-emerald-600"> Đúng (Đ)
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer text-sm font-extrabold text-rose-700">
+                                    <input type="radio" name="tf-${item.id}-${sIdx}" value="false" class="w-4 h-4 text-rose-600"> Sai (S)
+                                </label>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += `</div><div id="tf-feedback-${item.id}" class="hidden p-4 rounded-xl text-sm font-semibold mt-3"></div></div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        function submitTF() {
+            let score = 0;
+            tfData.forEach(item => {
+                let correctCount = 0;
+                let detailsHtml = '<ul class="list-disc list-inside mt-2 space-y-1 text-xs">';
+                item.statements.forEach((stmt, sIdx) => {
+                    const selected = document.querySelector(`input[name="tf-${item.id}-${sIdx}"]:checked`);
+                    const isCorrect = selected && (selected.value === 'true') === stmt.answer;
+                    if (isCorrect) {
+                        score += 1;
+                        correctCount += 1;
+                    }
+                    detailsHtml += `<li><b>Ý ${String.fromCharCode(97 + sIdx)}:</b> Đáp án chuẩn là <b>${stmt.answer ? 'Đúng' : 'Sai'}</b>. ${stmt.exp}</li>`;
+                });
+                detailsHtml += '</ul>';
+
+                const feedback = document.getElementById(`tf-feedback-${item.id}`);
+                feedback.classList.remove('hidden');
+                if (correctCount === 4) {
+                    feedback.className = "p-4 rounded-xl text-sm font-semibold mt-3 bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i><b>Chính xác tuyệt đối 4/4 ý!</b> ${detailsHtml}`;
+                } else {
+                    feedback.className = "p-4 rounded-xl text-sm font-semibold mt-3 bg-amber-50 text-amber-900 border border-amber-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-exclamation text-amber-600 mr-2"></i><b>Đúng ${correctCount}/4 ý.</b> Xem lại giải thích chi tiết:${detailsHtml}`;
+                }
+            });
+            document.getElementById('tf-score-badge').innerText = `Điểm: ${score} / 16`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const shortData = [
+            { id: 29, q: "Câu 29. Cho biết năm 2020, GDP của thế giới đạt 85.000 tỉ USD, trong đó GDP của Liên minh châu Âu (EU) đạt 15.300 tỉ USD. Tỉ trọng GDP của EU so với thế giới năm 2020 là bao nhiêu %? (Làm tròn kết quả đến 1 chữ số sau dấu phẩy)", answer: "18.0", unit: "%", exp: "Cách tính: (15.300 / 85.000) * 100% = 18.0%" },
+            { id: 30, q: "Câu 30. Thành phố Copenhagen (Đan Mạch) là một trong những đô thị châu Âu tích cực phát triển giao thông xanh nhằm giảm ô nhiễm môi trường. Giả sử lượng khí thải từ hoạt động giao thông của thành phố là 800 nghìn tấn/năm. Sau khi đẩy mạnh sử dụng xe đạp, xe buýt và phương tiện chạy điện, lượng khí thải giảm 20% so với ban đầu. Lượng khí thải của thành phố đã giảm bao nhiêu nghìn tấn/năm? (Làm tròn kết quả đến 1 chữ số sau dấu phẩy)", answer: "160.0", unit: "nghìn tấn", exp: "Cách tính: 800 * 20% = 160 nghìn tấn." },
+            { id: 31, q: "Câu 31. Cho biết GDP của thế giới năm 2021 là 96.513,1 tỉ USD, châu Âu là 17.177,4 tỉ USD. Tỉ trọng GDP của EU so với thế giới năm 2021 là bao nhiêu %? (Làm tròn kết quả đến 1 chữ số sau dấu phẩy)", answer: "17.8", unit: "%", exp: "Cách tính: (17.177,4 / 96.513,1) * 100% ≈ 17.8%" },
+            { id: 32, q: "Câu 32. Một quốc gia châu Âu có lượng khí thải từ hoạt động công nghiệp là 1.500 nghìn tấn/năm. Sau khi áp dụng công nghệ xanh, lượng khí thải giảm xuống còn 1.200 nghìn tấn/năm. Lượng khí thải đã giảm đi bao nhiêu %? (Làm tròn kết quả đến 1 chữ số sau dấu phẩy)", answer: "20.0", unit: "%", exp: "Cách tính: [(1.500 - 1.200) / 1.500] * 100% = 20.0%" },
+            { id: 33, q: "Câu 33. Cho biết GDP của thế giới năm 2024 là 111.669,4 tỉ USD, châu Âu là 19.501,1 tỉ USD. Tỉ trọng GDP của EU so với thế giới năm 2024 là bao nhiêu %? (Làm tròn kết quả đến 1 chữ số sau dấu phẩy)", answer: "17.5", unit: "%", exp: "Cách tính: (19.501,1 / 111.669,4) * 100% ≈ 17.5%" },
+            { id: 34, q: "Câu 34. Theo Cơ quan Môi trường Liên bang Đức, năm 2022, lượng phát thải khí nhà kính của Đức khoảng 749 triệu tấn khí thải; đến năm 2023 giảm xuống còn khoảng 672 triệu tấn khí thải. Lượng phát thải khí nhà kính của Đức đã giảm bao nhiêu phần trăm? (Làm tròn kết quả đến 1 chữ số sau dấu phẩy)", answer: "10.3", unit: "%", exp: "Cách tính: [(749 - 672) / 749] * 100% ≈ 10.3%" },
+            { id: 35, q: "Câu 35. Cho biết GDP của thế giới năm 2025 là 118.350,2 tỉ USD, châu Âu là 21.243,2 tỉ USD. Tỉ trọng GDP của EU so với thế giới năm 2025 là bao nhiêu %? (Làm tròn kết quả đến 1 chữ số sau dấu phẩy)", answer: "18.0", unit: "%", exp: "Cách tính: (21.243,2 / 118.350,2) * 100% ≈ 18.0%" },
+            { id: 36, q: "Câu 36. Năm 2023, lượng phát thải khí nhà kính của Vương quốc Anh ước đạt 478,4 triệu tấn CO2e. Năm 2024, lượng phát thải khí nhà kính của Vương quốc Anh giảm 0,5% so với năm 2023. Năm 2024, lượng phát thải khí nhà kính của Vương quốc Anh là bao nhiêu triệu tấn? (Làm tròn kết quả đến 1 chữ số sau dấu phẩy)", answer: "476.0", unit: "triệu tấn", exp: "Cách tính: 478,4 * (1 - 0.005) = 476.0 triệu tấn." }
+        ];
+
+        function renderShort() {
+            const container = document.getElementById('short-container');
+            container.innerHTML = '';
+            shortData.forEach(item => {
+                let html = `
+                    <div class="p-6 bg-slate-50/90 rounded-2xl border-2 border-slate-200 shadow-sm space-y-3">
+                        <p class="font-extrabold text-slate-900 text-base">${item.q}</p>
+                        <div class="flex items-center gap-4">
+                            <input type="text" id="short-input-${item.id}" placeholder="Nhập số..." class="border-2 border-slate-300 rounded-xl px-4 py-2.5 w-56 focus:outline-none focus:border-cyan-500 font-extrabold text-slate-800 text-base shadow-inner">
+                            <span class="text-slate-700 font-bold">${item.unit}</span>
+                        </div>
+                        <div id="short-feedback-${item.id}" class="hidden p-4 rounded-xl text-sm font-semibold mt-2"></div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        function submitShort() {
+            let score = 0;
+            shortData.forEach(item => {
+                const val = document.getElementById(`short-input-${item.id}`).value.trim();
+                const feedback = document.getElementById(`short-feedback-${item.id}`);
+                feedback.classList.remove('hidden');
+                if (val === item.answer || parseFloat(val) === parseFloat(item.answer)) {
+                    score += 1;
+                    feedback.className = "p-4 rounded-xl text-sm font-semibold mt-2 bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-2"></i><b>Chính xác!</b> ${item.exp}`;
+                } else {
+                    feedback.className = "p-4 rounded-xl text-sm font-semibold mt-2 bg-rose-50 text-rose-800 border border-rose-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 mr-2"></i><b>Chưa chính xác.</b> Đáp án chuẩn: <b>${item.answer} ${item.unit}</b><br><span class="text-xs text-slate-600 mt-1 block font-normal">${item.exp}</span>`;
+                }
+            });
+            document.getElementById('short-score-badge').innerText = `Điểm: ${score} / 8`;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        const essayData = [
+            { 
+                id: 37, 
+                q: "Câu 37.\na. Trình bày đặc điểm vị trí địa lí, kích thước và hình dạng lãnh thổ châu Âu?\nb. Giải thích vì sao khí hậu châu Âu có sự khác biệt rõ rệt giữa khu vực Tây Âu và Đông Âu?",
+                keywords: ["phía tây", "bán cầu bắc", "36", "71", "giáp", "diện tích", "10 triệu", "bờ biển", "cắt xẻ", "tây âu", "đông âu", "hải lưu nóng", "gió tây ôn đới", "lục địa"]
+            },
+            { 
+                id: 38, 
+                q: "Câu 38.\nMột doanh nghiệp Việt Nam sử dụng than đá làm nhiên liệu chính để sản xuất thép xuất khẩu sang thị trường Liên minh châu Âu (EU) - Tuy nhiên, EU ngày càng áp dụng các quy định nghiêm ngặt về lượng khí thải các-bon đối với hàng hóa nhập khẩu. Theo em, việc sử dụng than đá trong sản xuất có thể gây ra những khó khăn gì cho doanh nghiệp khi xuất khẩu thép sang thị trường EU?",
+                keywords: ["than đá", "khí nhà kính", "co2", "thuế các-bon", "cbam", "khó khăn", "giá thành", "cạnh tranh", "từ chối"]
+            },
+            { 
+                id: 39, 
+                q: "Câu 39.\na. Hãy trình bày đặc điểm các dạng địa hình cơ bản ở châu Âu?\nb. Phân tích mối quan hệ giữa khí hậu và chế độ nước sông ngòi của châu Âu?",
+                keywords: ["đồng bằng", "2/3", "núi già", "xcan-đi-na-vi", "u-ran", "núi trẻ", "an-pơ", "mưa", "đông âu", "đóng băng", "băng tuyết tan", "lũ xuân"]
+            },
+            { 
+                id: 40, 
+                q: "Câu 40.\nVào năm 2026, Liên minh châu Âu (EU) áp dụng quy định 'Thuế các-bon biên giới' (CBAM) đối với hàng hóa nhập khẩu từ các nước ngoài khối. Một doanh nghiệp Việt Nam sản xuất thép để xuất khẩu sang thị trường EU. Tuy nhiên, doanh nghiệp vẫn sử dụng than đá làm nguồn năng lượng chính, khiến quá trình sản xuất phát thải nhiều khí CO2. Em hãy đề xuất giải pháp thiết thực cho doanh nghiệp này để đáp ứng tiêu chuẩn môi trường của châu Âu?",
+                keywords: ["sản xuất xanh", "giảm khí thải", "năng lượng sạch", "năng lượng tái tạo", "tái chế", "cbam", "than đá"]
+            },
+            { 
+                id: 41, 
+                q: "Câu 41.\na. Hãy trình bày đặc điểm của cơ cấu dân cư châu Âu?\nb. Xu hướng già hóa dân số đang đặt ra những thách thức gì cho sự phát triển kinh tế - xã hội của châu Âu? Các quốc gia tại đây đã giải quyết bằng cách nào?",
+                keywords: ["dân số già", "dưới 15 tuổi", "65 tuổi", "nữ cao hơn nam", "trình độ học vấn", "thiếu hụt lao động", "an sinh xã hội", "sinh thêm con", "tăng tuổi nghỉ hưu", "nhập cư"]
+            },
+            { 
+                id: 42, 
+                q: "Câu 42.\nMột công ty vận tải đường thủy tại Nga dự kiến vận chuyển hàng hóa bằng tàu trên sông Von-ga (Volga). Công ty đang cân nhắc hai thời điểm khởi hành: tháng 1 hoặc tháng 6. Nếu là người phụ trách vận tải, em sẽ lựa chọn thời điểm nào để tàu di chuyển thuận lợi hơn? Giải thích.",
+                keywords: ["tháng 6", "tháng 1", "đóng băng", "băng tan", "thuận lợi", "giao thông đường thủy"]
+            },
+            { 
+                id: 43, 
+                q: "Câu 43.\na. Hãy trình bày đặc điểm đô thị hóa ở châu Âu?\nb. Tại sao quá trình đô thị hóa ở châu Âu lại được đánh giá là có mức độ phát triển cao, chất lượng và bền vững?",
+                keywords: ["sớm", "thế kỉ xviii", "75%", "mở rộng ngoại ô", "cách mạng công nghiệp", "hạ tầng", "không gian xanh", "chất lượng cuộc sống"]
+            },
+            { 
+                id: 44, 
+                q: "Câu 44.\nMột công ty vận tải dự kiến vận chuyển hàng hóa từ Nga đến Pháp bằng đường thủy, kết hợp các tuyến sông và kênh đào có kết nối phù hợp. Công ty muốn thực hiện chuyến hàng vào tháng 12 để kịp giao hàng cuối năm. Tuy nhiên, bộ phận kĩ thuật cảnh báo nguy cơ một số tuyến sông ở Đông Âu bị đóng băng. Nếu là người quản lí công ty, em có nên giữ nguyên kế hoạch vận chuyển bằng đường thủy vào tháng 12 không? Hãy đề xuất một giải pháp phù hợp và giải thích.",
+                keywords: ["không nên", "tháng 12", "đóng băng", "đông âu", "thay đổi thời gian", "phương thức khác", "đường bộ", "đường sắt"]
+            },
+            { 
+                id: 45, 
+                q: "Câu 45.\nPhân tích tác động của các dòng hải lưu nóng (như hải lưu Bắc Đại Tây Dương) đến khí hậu và đời sống kinh tế ở các quốc gia ven biển phía tây và tây bắc châu Âu.",
+                keywords: ["hải lưu nóng", "bắc đại tây dương", "ôn đới hải dương", "ấm áp", "mưa nhiều", "không đóng băng", "cảng biển"]
+            },
+            { 
+                id: 46, 
+                q: "Câu 46.\nTrình bày vai trò và tầm quan trọng của Liên minh châu Âu (EU) đối với nền kinh tế thế giới cũng như các nước thành viên thông qua thị trường chung và đồng tiền chung Euro.",
+                keywords: ["liên minh châu âu", "eu", "thị trường chung", "tự do lưu thông", "euro", "gdp toàn cầu", "thương mại quốc tế"]
+            },
+            { 
+                id: 47, 
+                q: "Câu 47.\nĐánh giá những thuận lợi và khó khăn từ điều kiện địa hình đồng bằng và miền núi đối với hoạt động sản xuất nông nghiệp và giao thông vận tải ở châu Âu.",
+                keywords: ["đồng bằng", "thuận lợi", "nông nghiệp", "giao thông", "miền núi", "hiểm trở", "khó khăn"]
+            },
+            { 
+                id: 48, 
+                q: "Câu 48.\nĐề xuất các giải pháp thiết thực để bảo vệ nguồn nước ngọt và khắc phục tình trạng ô nhiễm nguồn nước xuyên biên giới tại các lưu vực sông lớn ở châu Âu hiện nay.",
+                keywords: ["nguồn nước ngọt", "ô nhiễm", "xuyên biên giới", "công ước quốc tế", "ủy ban chung", "xử lý nước thải", "sông rai-nơ", "sông đa-nuýp"]
+            }
+        ];
+
+        function renderEssay() {
+            const container = document.getElementById('essay-container');
+            container.innerHTML = '';
+            essayData.forEach(item => {
+                container.innerHTML += `
+                    <div class="bg-slate-50/90 border-2 border-slate-200 rounded-2xl p-6 md:p-8 space-y-4 shadow-sm">
+                        <h3 class="font-extrabold text-slate-900 text-base md:text-lg flex items-start gap-3 whitespace-pre-line">
+                            <span class="bg-gradient-to-br from-teal-600 to-emerald-700 text-white w-7 h-7 rounded-xl flex items-center justify-center text-xs shrink-0 mt-0.5 shadow">${item.id}</span>
+                            <span>${item.q}</span>
+                        </h3>
+                        <div class="space-y-3 mt-4">
+                            <label class="block text-xs font-extrabold text-slate-700 uppercase tracking-wide"><i class="fa-solid fa-pen-nib mr-1 text-teal-600"></i> Bài làm của học sinh (Tự gõ câu trả lời):</label>
+                            <textarea id="essay-text-${item.id}" rows="4" placeholder="Nhập câu trả lời tự luận của em vào đây..." class="w-full border-2 border-slate-300 rounded-2xl p-4 focus:outline-none focus:border-teal-500 font-medium text-slate-800 text-sm shadow-inner"></textarea>
+                            
+                            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 pt-2">
+                                <label class="flex items-center gap-2 cursor-pointer bg-white px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100 transition shadow-xs text-xs font-bold text-slate-700">
+                                    <i class="fa-solid fa-camera text-teal-600 text-base"></i> Tải ảnh bài làm (Chụp vở ghi):
+                                    <input type="file" id="essay-file-${item.id}" accept="image/*" class="hidden" onchange="previewImage(${item.id})">
+                                </label>
+                                <span id="essay-file-name-${item.id}" class="text-xs text-slate-500 font-medium italic">Chưa có tệp ảnh nào được chọn</span>
+                            </div>
+                            <div id="essay-img-preview-${item.id}" class="hidden mt-2">
+                                <img id="preview-tag-${item.id}" src="" alt="Preview" class="w-32 h-32 object-cover rounded-xl border-2 border-teal-400 shadow-md">
+                            </div>
+                            <div id="essay-feedback-${item.id}" class="hidden p-4 rounded-xl text-sm font-semibold mt-3"></div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function previewImage(id) {
+            const fileInput = document.getElementById(`essay-file-${id}`);
+            const fileNameSpan = document.getElementById(`essay-file-name-${id}`);
+            const previewDiv = document.getElementById(`essay-img-preview-${id}`);
+            const previewImg = document.getElementById(`preview-tag-${id}`);
+
+            if (fileInput.files && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                fileNameSpan.innerText = `Đã chọn: ${file.name}`;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                    previewDiv.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function submitAllEssay() {
+            let totalChecked = 0;
+            let goodCount = 0;
+
+            essayData.forEach(item => {
+                const textVal = document.getElementById(`essay-text-${item.id}`).value.toLowerCase().trim();
+                const fileInput = document.getElementById(`essay-file-${item.id}`);
+                const feedbackDiv = document.getElementById(`essay-feedback-${item.id}`);
+                feedbackDiv.classList.remove('hidden');
+
+                const hasImage = fileInput.files && fileInput.files.length > 0;
+                
+                if (textVal.length === 0 && !hasImage) {
+                    feedbackDiv.className = "p-4 rounded-xl text-sm font-semibold mt-3 bg-amber-50 text-amber-800 border border-amber-200";
+                    feedbackDiv.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-2 text-amber-600"></i><b>Chưa làm câu này:</b> Em chưa nhập câu trả lời hoặc tải ảnh bài làm lên.`;
+                    return;
+                }
+
+                totalChecked++;
+
+                let matchedKeywords = 0;
+                if (textVal.length > 0) {
+                    item.keywords.forEach(kw => {
+                        if (textVal.includes(kw.toLowerCase())) {
+                            matchedKeywords++;
+                        }
+                    });
+                }
+
+                if (hasImage && textVal.length === 0) {
+                    goodCount++;
+                    feedbackDiv.className = "p-4 rounded-xl text-sm font-semibold mt-3 bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    feedbackDiv.innerHTML = `<i class="fa-solid fa-circle-check mr-2 text-emerald-600"></i><b>Cô Nguyễn Chung đã nhận ảnh bài làm!</b> Hệ thống ghi nhận em đã hoàn thành chụp vở ghi cho câu này. Hãy đối chiếu với vở ghi trên lớp nhé!`;
+                } else if (matchedKeywords >= 2 || textVal.length > 30) {
+                    goodCount++;
+                    feedbackDiv.className = "p-4 rounded-xl text-sm font-semibold mt-3 bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    feedbackDiv.innerHTML = `<i class="fa-solid fa-circle-check mr-2 text-emerald-600"></i><b>Tuyệt vời! Bài làm rất đầy đủ và chính xác ý.</b> Em đã đề cập được các ý chính theo chuẩn đáp án đề cương.`;
+                } else {
+                    feedbackDiv.className = "p-4 rounded-xl text-sm font-semibold mt-3 bg-amber-50 text-amber-900 border border-amber-200";
+                    feedbackDiv.innerHTML = `<i class="fa-solid fa-circle-exclamation mr-2 text-amber-600"></i><b>Cần bổ sung thêm ý:</b> Câu trả lời của em còn ngắn hoặc chưa nêu đủ các từ khóa trọng tâm (ví dụ như: ${item.keywords.slice(0, 3).join(', ')}...). Em hãy bổ sung thêm để đạt điểm tối đa nhé!`;
+                }
+            });
+
+            alert(`Cô Nguyễn Chung đã chấm xong bài tự luận của em! Em đã hoàn thành ${totalChecked} / 12 câu (Đạt yêu cầu: ${goodCount} câu).`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        let chalTimer = 30;
+        let chalInterval = null;
+        let chalIndex = 0;
+        let chalScore = 0;
+        let chalQuestions = [];
+
+        function startChallenge() {
+            document.getElementById('challenge-lobby').classList.add('hidden');
+            document.getElementById('challenge-result').classList.add('hidden');
+            document.getElementById('challenge-playarea').classList.remove('hidden');
+            document.getElementById('challenge-stats').classList.remove('hidden');
+            document.getElementById('chal-feedback-box').classList.add('hidden');
+
+            chalQuestions = [...mcqData];
+            chalIndex = 0;
+            chalScore = 0;
+            document.getElementById('chal-score').innerText = chalScore;
+            document.getElementById('chal-max-score').innerText = chalQuestions.length * 10;
+            loadChallengeQuestion();
+        }
+
+        function loadChallengeQuestion() {
+            if (chalIndex >= chalQuestions.length) {
+                endChallenge();
+                return;
+            }
+
+            clearInterval(chalInterval);
+            chalTimer = 30;
+            document.getElementById('chal-timer').innerText = chalTimer;
+            document.getElementById('chal-feedback-box').classList.add('hidden');
+
+            chalInterval = setInterval(() => {
+                chalTimer--;
+                document.getElementById('chal-timer').innerText = chalTimer;
+                if (chalTimer <= 0) {
+                    clearInterval(chalInterval);
+                    checkChallengeAnswer(-1, chalQuestions[chalIndex].correct);
+                }
+            }, 1000);
+
+            const q = chalQuestions[chalIndex];
+            document.getElementById('chal-progress').innerText = `Câu hỏi ${chalIndex + 1} / ${chalQuestions.length}`;
+            
+            let html = `<p class="font-extrabold text-slate-900 text-lg md:text-xl">${q.q}</p><div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 mt-5">`;
+            q.options.forEach((opt, optIdx) => {
+                html += `
+                    <button onclick="checkChallengeAnswer(${optIdx}, ${q.correct})" class="p-4 bg-white rounded-2xl border-2 border-amber-300 text-left text-slate-800 hover:bg-amber-100 transition font-bold shadow-md btn-amber-3d">
+                        <b>${String.fromCharCode(65 + optIdx)}.</b> ${opt}
+                    </button>
+                `;
+            });
+            html += `</div>`;
+            document.getElementById('chal-question-box').innerHTML = html;
+        }
+
+        function checkChallengeAnswer(selected, correct) {
+            clearInterval(chalInterval);
+            const q = chalQuestions[chalIndex];
+            const feedbackBox = document.getElementById('chal-feedback-box');
+            feedbackBox.classList.remove('hidden');
+
+            if (selected === correct) {
+                chalScore += 10;
+                document.getElementById('chal-score').innerText = chalScore;
+                feedbackBox.className = "p-4 rounded-2xl text-sm font-semibold bg-emerald-100 text-emerald-900 border-2 border-emerald-300 shadow";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600 mr-2 text-base"></i><b>Chính xác! (+10 điểm)</b><br><span class="text-xs text-slate-700 mt-1 block font-normal">Giải thích: ${q.explanation}</span>`;
+            } else {
+                feedbackBox.className = "p-4 rounded-2xl text-sm font-semibold bg-rose-100 text-rose-900 border-2 border-rose-300 shadow";
+                feedbackBox.innerHTML = `<i class="fa-solid fa-circle-xmark text-rose-600 mr-2 text-base"></i><b>Chưa chính xác.</b> Đáp án đúng: <b>${String.fromCharCode(65 + q.correct)}. ${q.options[q.correct]}</b><br><span class="text-xs text-slate-700 mt-1 block font-normal">Giải thích: ${q.explanation}</span>`;
+            }
+
+            const buttons = document.getElementById('chal-question-box').querySelectorAll('button');
+            buttons.forEach(btn => btn.disabled = true);
+
+            setTimeout(() => {
+                chalIndex++;
+                loadChallengeQuestion();
+            }, 3800);
+        }
+
+        function endChallenge() {
+            clearInterval(chalInterval);
+            document.getElementById('challenge-playarea').classList.add('hidden');
+            document.getElementById('challenge-stats').classList.add('hidden');
+            document.getElementById('challenge-result').classList.remove('hidden');
+            
+            const maxPossible = chalQuestions.length * 10;
+            if (chalScore === maxPossible) {
+                document.getElementById('chal-final-title').innerText = "🏆 Xuất Sắc Tuyệt Đối - Quán Quân Địa Lí!";
+            } else if (chalScore >= maxPossible * 0.7) {
+                document.getElementById('chal-final-title').innerText = "🌟 Giỏi Lắm! Nhà Địa Lí Tài Ba!";
+            } else {
+                document.getElementById('chal-final-title').innerText = "💪 Cố Gắng Hơn Nhé!";
+            }
+            document.getElementById('chal-final-desc').innerText = `Em đã đạt được tổng số điểm: ${chalScore} / ${maxPossible} điểm. Cô Nguyễn Chung tuyên dương tinh thần ôn tập chăm chỉ của em!`;
+        }
+
+        window.onload = function() {
+            renderMCQ();
+            renderTF();
+            renderShort();
+            renderEssay();
+        }
+    </script>
+</body>
+</html>
